@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Float } from '@react-three/drei';
-import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Download, Code, Database, Brain, Cpu, Globe, Award } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Brain, Cpu, Globe, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -135,6 +135,13 @@ const Index = () => {
   const y1 = useTransform(scrollY, [0, 300], [0, 200]);
   const y2 = useTransform(scrollY, [0, 300], [0, -100]);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const skills = [
     { category: "Frontend", icon: <Globe className="w-5 h-5" />, items: ["React", "Next.js", "TypeScript", "HTML/CSS", "JavaScript"] },
     { category: "Backend", icon: <Database className="w-5 h-5" />, items: ["Node.js", "Python", "FastAPI", "Express.js", "REST APIs"] },
@@ -228,7 +235,7 @@ const Index = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative pt-20">
+      <section className="min-h-screen flex items-center justify-center relative pt-10">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -264,15 +271,13 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-4"
             >
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full">
+              <Button 
+                onClick={scrollToContact}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full"
+              >
                 <Mail className="w-5 h-5 mr-2" />
                 Contact Me
-              </Button>
-              <Button variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full">
-                <Download className="w-5 h-5 mr-2" />
-                Download CV
               </Button>
             </motion.div>
           </motion.div>
@@ -288,6 +293,13 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-cyan-400/20 rounded-full animate-pulse"></div>
               <div className="absolute inset-4 bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-full animate-pulse animation-delay-1000"></div>
               <div className="absolute inset-8 bg-gradient-to-r from-purple-800/40 to-cyan-800/40 rounded-full animate-pulse animation-delay-2000"></div>
+              <div className="absolute inset-12 rounded-full overflow-hidden border-4 border-purple-400/50">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Chaitali Vasist" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -361,7 +373,7 @@ const Index = () => {
               <Card className="bg-gradient-to-br from-yellow-600/20 to-orange-600/20 backdrop-blur-md border-yellow-500/20 p-6 text-center">
                 <Globe className="w-12 h-12 mx-auto mb-4 text-yellow-400" />
                 <h3 className="text-2xl font-bold text-white mb-2">Languages</h3>
-                <p className="text-yellow-300">3 Fluent</p>
+                <p className="text-yellow-600">3 Fluent</p>
               </Card>
             </motion.div>
           </div>
@@ -573,7 +585,7 @@ const Index = () => {
                         <Github className="w-6 h-6 text-white" />
                       </motion.a>
                       <motion.a
-                        href="https://www.linkedin.com/in/chaitalivasist"
+                        href="https://www.linkedin.com/in/chaitali-vasist-4798022b9/"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
