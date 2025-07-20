@@ -180,7 +180,14 @@ const Index = () => {
       description: "Platform to crowdsource real-time aid during disasters",
       tech: ["HTML/CSS", "JavaScript", "MongoDB", "Map APIs"],
       category: "Social Impact"
+    },
+    {
+      title: "Whispr App",
+      description: "A full-featured messaging application with real-time push notifications",
+      tech: ["React", "Capacitor", "Firebase Cloud Messaging", "TanStack Query"],
+      category: "Android App"
     }
+    
   ];
 
   const experience = [
